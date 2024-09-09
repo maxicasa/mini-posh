@@ -1,0 +1,104 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+      {
+        "alignment": "left",
+        "segments": [
+          {
+            "foreground": "cyan",
+            "style": "powerline",
+            "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}",
+            "type": "os"
+          },
+          {
+            "foreground": "cyan",
+            "properties": {
+              "style": "full"
+            },
+            "style": "plain",
+            "template": " {{ .Path }} ",
+            "type": "path"
+          },
+          {
+            "foreground": "#3f761f",
+            "foreground_templates": [
+              "{{ if or (.Working.Changed) (.Staging.Changed) }}#76DB3A{{ end }}",
+              "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#DB4A2B{{ end }}",
+              "{{ if gt .Ahead 0 }}#DBA74B{{ end }}",
+              "{{ if gt .Behind 0 }}#DB3043{{ end }}"
+            ],
+            "properties": {
+              "branch_max_length": 25,
+              "fetch_stash_count": true,
+              "fetch_status": true,
+              "fetch_upstream_icon": true,
+              "source": "cli"
+            },
+            "style": "plain",
+            "template": "{{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}",
+            "type": "git"
+          }
+        ],
+        "type": "prompt"
+      },
+      {
+        "alignment": "right",
+        "segments": [
+          {
+            "foreground": "red",
+            "style": "plain",
+            "template": " root ",
+            "type": "root"
+          },
+          {
+            "foreground": "#06A4CE",
+            "style": "powerline",
+            "template": " \ue798 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+            "type": "dart"
+          },
+          {
+            "foreground": "#6CA35E",
+            "style": "powerline",
+            "template": " \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
+            "type": "node"
+          },
+          {
+            "foreground": "#4584b6",
+            "properties": {
+              "display_mode": "context",
+              "fetch_virtual_env": true
+            },
+            "style": "plain",
+            "template": " \ue235 {{ .Venv }} ",
+            "type": "python"
+          },
+          {
+            "foreground": "darkGray",
+            "style": "diamond",
+            "template": "⏱ {{ .CurrentDate | date .Format }}",
+            "type": "time"
+          }
+        ],
+        "type": "prompt"
+      },
+      {
+        "alignment": "left",
+        "newline": true,
+        "segments": [
+          {
+            "foreground": "lightGreen",
+            "foreground_templates": ["{{ if gt .Code 0 }}red{{ end }}"],
+            "properties": {
+              "always_enabled": true
+            },
+            "style": "powerline",
+            "template": "\u279c ",
+            "type": "status"
+          }
+        ],
+        "type": "prompt"
+      }
+    ],
+    "version": 2
+  }
+  
