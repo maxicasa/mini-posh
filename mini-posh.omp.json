@@ -57,16 +57,24 @@
           "type": "dart"
         },
         {
-          "type": "pnpm",
-          "style": "powerline",
+          "type": "command",
+          "style": "plain",
           "foreground": "#F9AD00",
-          "template": "󰋁 "
+          "template": "{{ if .Output }} 󰋁 {{ end }}",
+          "properties": {
+            "shell": "bash",
+            "command": "ls | grep pnpm-lock.yaml"
+          }
         },
         {
-          "type": "npm",
-          "style": "powerline",
+          "type": "command",
+          "style": "plain",
           "foreground": "#911616",
-          "template": " "
+          "template": "{{ if .Output }}  {{ end }}",
+          "properties": {
+            "shell": "bash",
+            "command": "ls | grep package-lock.json"
+          }
         },
         {
           "foreground": "#6CA35E",
